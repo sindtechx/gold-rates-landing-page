@@ -23,11 +23,9 @@ interface RawData {
 }
 
 function transformRates(data: RawData) {
-  const transformed: any = {
-    UAE: {}
-  };
+  const transformed: any = {};
 
-  // Transform UAE rates (top-level carat data)
+  // Transform UAE rates (top-level carat data) - default country
   const caratMapping: { [key: string]: string } = {
     carat24: '24K',
     carat22: '22K',
@@ -37,42 +35,12 @@ function transformRates(data: RawData) {
 
   for (const [key, label] of Object.entries(caratMapping)) {
     const rates = data[key as keyof RawData] as CaratRates;
-    transformed.UAE[label] = {
+    transformed[label] = {
       yesterday: parseFloat(rates.yesterday.toString()),
       morning: parseFloat(rates.morning.toString()),
       afternoon: parseFloat(rates.afternoon.toString())
     };
   }
-
-  // Transform country-specific rates
-  const countries = ['SAU', 'QAT', 'KWT', 'BHR', 'OMN', 'IND'];
-
-  for (const country of countries) {
-    const countryData = data[country as keyof RawData] as { [key: string]: CaratRates };
-    transformed[country] = {};
-
-    for (const [caratKey, caratLabel] of Object.entries(caratMapping)) {
-      if (countryData[caratKey]) {
-        const rates = countryData[caratKey];
-
-        // Skip if all values are 0 (like carat21 in most countries)
-        const yesterday = parseFloat(rates.yesterday.toString());
-        const morning = parseFloat(rates.morning.toString());
-        const afternoon = parseFloat(rates.afternoon.toString());
-
-        if (yesterday !== 0 || morning !== 0 || afternoon !== 0) {
-          transformed[country][caratLabel] = {
-            yesterday,
-            morning,
-            afternoon
-          };
-        }
-      }
-    }
-  }
-
-  // Add lastUpdated at the end
-  transformed.lastUpdated = data.lastUpdated;
 
   return transformed;
 }
