@@ -42,6 +42,9 @@ function transformRates(data: RawData) {
     };
   }
 
+  // Add timestamp from source
+  transformed.updated = data.lastUpdated;
+
   return transformed;
 }
 
