@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     description: 'Track live gold rates for 24K, 22K, 21K, and 18K gold straight from Dubai. Coming soon to App Store and Play Store.',
     type: 'website',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
