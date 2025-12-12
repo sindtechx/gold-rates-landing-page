@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -34,7 +35,13 @@ export default function Home() {
       <section className="container mx-auto px-6 py-20 md:py-32">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full mx-auto shadow-lg shadow-gold-500/50"></div>
+            <Image
+              src="/ic_launcher.png"
+              alt="Gold Rates Logo"
+              width={80}
+              height={80}
+              className="w-20 h-20 rounded-2xl mx-auto shadow-lg shadow-gold-500/50"
+            />
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             Track Dubai&apos;s Gold Rates in{" "}
@@ -350,7 +357,13 @@ export default function Home() {
       >
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full mx-auto shadow-lg shadow-gold-500/50"></div>
+            <Image
+              src="/ic_launcher.png"
+              alt="Gold Rates Logo"
+              width={80}
+              height={80}
+              className="w-20 h-20 rounded-2xl mx-auto shadow-lg shadow-gold-500/50"
+            />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Get Gold Rates Today
