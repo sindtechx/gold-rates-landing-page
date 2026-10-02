@@ -7,6 +7,7 @@ interface CaratRates {
   yesterday: string | number;
   morning: string | number;
   afternoon?: string | number;
+  evening?: string | number;
 }
 
 interface RawData {
@@ -59,6 +60,7 @@ function transformRates(data: RawData) {
       yesterday: toNumber(rates.yesterday),
       morning: toNumber(rates.morning),
       afternoon: toNumber(rates.afternoon),
+      evening: toNumber(rates.evening),
     };
   }
 
